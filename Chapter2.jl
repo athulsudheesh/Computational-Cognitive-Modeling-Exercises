@@ -1,7 +1,8 @@
 # A Simple Random-Walk Model 
 using Distributions
-
+using Plots 
 # Simulation Parameters
+
 nreps = 10000
 nsamples = 2000
 
@@ -21,3 +22,8 @@ for i in 1:nreps
     responses[i] = sign(evidence[i,p])
     latencies[i] = p 
 end 
+
+##### Plot a few randim-walk paths
+
+
+#plot(evidence[1:100,latencies[1:100] .- 1])

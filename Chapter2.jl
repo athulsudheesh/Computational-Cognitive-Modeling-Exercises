@@ -36,7 +36,7 @@ function plot_rw_path(evidence, latencies, criterion)
         legend = false, 
         ylims = [-criterion - 0.5, criterion + 0.5], 
         xlims = maximum(latencies[1:5]), 
-        xlabel = "Decision Time", 
+         = "Decision Time", 
         ylabel = "Evidence", 
         grid = false)
 hline!([criterion, -criterion], line =:dash)
@@ -46,4 +46,12 @@ end
 evidence, responses, latencies = random_walk(nreps,nsamples, fixed_parms...)
 plot_rw_path(evidence, latencies, criterion)
 
-# savefig("random_walk_path.png")
+histogram(latencies[responses .> 0], nbins = 15,
+            xlims =maximum(latencies),
+            xlabel = "Decision Time",
+            ylabel = "Frequency", 
+            color = :lightgrey, 
+            line=0.75, 
+            grid = false, 
+            legend = false)
+# savefig("random_walk_histogram.png")
